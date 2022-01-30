@@ -2,6 +2,7 @@
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
 // import HelloWorld from './components/HelloWorld.vue'
+
 </script>
 
 <template>
@@ -29,24 +30,33 @@
       <ul class="list-group h-100 overflow-auto">
         <li class="list-group-item bg-dark text-light p-3">
           <div class="d-flex align-items-start justify-content-start">
-            <span class="badge bg-primary my-1">user</span>
+            <div class="d-flex flex-column my-1 me-3">
+              <span class="badge bg-primary mb-1">user</span>
+              <span class="badge text-muted text-nowrap">3:10 PM</span>
+            </div>
             <span
-              class="mx-2"
+              class="text-start"
             >Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, ipsam?</span>
           </div>
         </li>
 
         <li class="list-group-item bg-dark text-light p-3">
           <div class="d-flex align-items-start justify-content-end">
-            <span class="text-end mx-2">Lorem ipsum dolor sit amet.</span>
-            <span class="badge bg-primary my-1">you</span>
+            <span class="text-end">Lorem ipsum dolor sit amet.</span>
+            <div class="d-flex flex-column my-1 ms-3">
+              <span class="badge bg-primary mb-1">you</span>
+              <span class="badge text-muted text-nowrap">3:15 PM</span>
+            </div>
           </div>
         </li>
 
         <li class="list-group-item bg-dark text-light p-3">
           <div class="d-flex align-items-start justify-content-start">
-            <span class="badge bg-primary my-1">user</span>
-            <span class="mx-2">
+            <div class="d-flex flex-column my-1 me-3">
+              <span class="badge bg-primary mb-1">user</span>
+              <span class="badge text-muted text-nowrap">4:00 PM</span>
+            </div>
+            <span class="text-start">
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
               Excepturi totam amet modi aliquam aut,
               harum quidem necessitatibus laudantium magni sit.
@@ -56,12 +66,15 @@
 
         <li class="list-group-item bg-dark text-light p-3">
           <div class="d-flex align-items-start justify-content-end">
-            <span class="text-end mx-2">
+            <span class="text-end ">
               Lorem ipsum dolor sit, amet consectetur adipisicing elit.
               Eius dolore sapiente laboriosam tempore facilis blanditiis,
               recusandae totam explicabo numquam voluptatem ullam laudantium tempora.
             </span>
-            <span class="badge bg-primary my-1">you</span>
+            <div class="d-flex flex-column my-1 ms-3">
+              <span class="badge bg-primary mb-1">you</span>
+              <span class="badge text-muted text-nowrap">6:30 PM</span>
+            </div>
           </div>
         </li>
       </ul>
