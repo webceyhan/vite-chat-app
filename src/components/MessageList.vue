@@ -1,5 +1,6 @@
 <script setup>
 
+import { ref, watch } from 'vue';
 import Message from './Message.vue'
 
 const props = defineProps({
@@ -7,10 +8,20 @@ const props = defineProps({
   messages: { type: Array, default: () => [] },
 })
 
+const root = ref(null);
+
+watch(props.messages, () => {
+  // get teplate ref
+  const rootDiv = root.value;
+
+  // scroll to down to show new message with 100ms delay
+  setTimeout(() => rootDiv.scrollTop = rootDiv.scrollHeight, 100);
+})
+
 </script>
 
 <template>
-  <ul class="list-group overflow-auto h-100" style="max-height: 400px;">
+  <ul ref="root" class="list-group overflow-auto" style="height: 400px;">
     <message
       v-for="(message, i) in messages"
       :key="i"
