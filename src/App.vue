@@ -2,6 +2,7 @@
 
 import { ref } from 'vue';
 import MessageList from './components/MessageList.vue'
+import MessageInput from './components/MessageInput.vue'
 
 const user = ref('you')
 
@@ -12,6 +13,16 @@ const messages = ref([
   { user: 'you', text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius dolore sapiente laboriosam tempore', date: '6:30 PM' },
 ])
 
+
+const timestamp = (date = new Date) => date.toLocaleTimeString('en-US', {
+  hour: 'numeric', 
+  minute: 'numeric', 
+  hour12: true
+});
+
+const onSend = (text) => {
+  messages.value.push({ user, text, date: timestamp() })
+}
 
 </script>
 
@@ -42,13 +53,7 @@ const messages = ref([
 
     <!-- Footer -->
     <div class="card-footer p-4">
-      <div class="input-group">
-        <textarea
-          class="form-control bg-dark text-light border-secondary p-3"
-          placeholder="type your message and press send button.."
-        ></textarea>
-        <button class="btn btn-outline-secondary" type="button">Send</button>
-      </div>
+      <message-input @send="onSend" />
     </div>
   </div>
 </template>
