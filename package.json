@@ -1,5 +1,5 @@
 {
-  "name": "vite-chat-app",
+  "name": "chat-app",
   "version": "0.0.0",
   "repository": {
     "type": "git",
@@ -13,11 +13,10 @@
   },
   "homepage": "https://github.com/webceyhan/vite-chat-app#readme",
   "scripts": {
-    "dev": "vite dev",
-    "build": "vite build",
-    "build:prod": "vite build --mode=prod",
+    "dev": "vite dev",    
+    "build": "vite build --mode=prod",
     "preview": "vite preview",
-    "serve": "node server"
+    "start": "node server"
   },
   "dependencies": {
     "bootstrap": "^5.1.3",
