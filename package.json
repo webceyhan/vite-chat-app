@@ -1,6 +1,17 @@
 {
   "name": "vite-chat-app",
   "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/webceyhan/vite-chat-app.git"
+  },
+  "keywords": [],
+  "author": "Evren Ceyhan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/webceyhan/vite-chat-app/issues"
+  },
+  "homepage": "https://github.com/webceyhan/vite-chat-app#readme",
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
