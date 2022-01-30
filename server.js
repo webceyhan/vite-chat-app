@@ -2,13 +2,20 @@ const express = require('express');
 const { createServer } = require('http');
 const { WebSocketServer } = require('ws');
 
-const createHttpServer = (port = 9090) => {
+const createHttpServer = (port = process.env.PORT || 8080) => {
     // create app
     const app = express();
     const server = createServer(app);
 
+    // set root directory
+    const rootDir = __dirname + '/dist';
+
     // serve static client files
-    app.use(express.static('dist'));
+    app.use(express.static(rootDir));
+
+    app.get('/*', function (req, res) {
+        res.sendFile(path.join(rootDir + '/index.html'));
+    });
 
     // listen
     server.listen(port, () => {
@@ -63,7 +70,7 @@ const createSocketServer = (httpServer) => {
 
         const heartbeat = function () {
             clearTimeout(this.pingTimeout);
-            console.log(`heartbeat: ${user}`)
+            console.log(`heartbeat: ${user}`);
             // Use `WebSocket#terminate()`, which immediately destroys the connection,
             // instead of `WebSocket#close()`, which waits for the close timer.
             // Delay should be equal to the interval at which your server
