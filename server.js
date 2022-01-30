@@ -8,11 +8,11 @@ const createHttpServer = (port = 9090) => {
     const server = createServer(app);
 
     // serve static client files
-    app.use(express.static('public'));
+    app.use(express.static('dist'));
 
     // listen
     server.listen(port, () => {
-        console.log(`http server started at http://localhost:${port}`);
+        console.log(`server started: http://localhost:${port}`);
     });
 
     return server;
