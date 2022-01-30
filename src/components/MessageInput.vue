@@ -15,11 +15,13 @@ const onSend = () => {
 
 <template>
   <div class="input-group">
-    <textarea
+    <input
+      type="text"
       class="form-control bg-dark text-light border-secondary p-3"
       placeholder="type your message and press send button.."
       v-model="text"
-    ></textarea>
+      @keyup.enter="onSend"
+    />
     <button class="btn btn-outline-secondary" type="button" :disabled="empty" @click="onSend">Send</button>
   </div>
 </template>
