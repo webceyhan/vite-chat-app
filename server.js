@@ -1,10 +1,7 @@
-// const express = require('express');
-// const { createServer } = require('http');
 const { WebSocketServer } = require('ws');
 
-function createSocketServer(server) {
+function createSocketServer() {
     // create websocket server
-    // const wss = new WebSocketServer({ server });
     const wss = new WebSocketServer({ port: 9090 });
 
     // define user map (socket:name)
@@ -26,6 +23,7 @@ function createSocketServer(server) {
                     // add user {ws as id: data as name}
                     users.set(ws, data);
                     emit(ws, 'joined', true);
+
                     console.log(`user joined: ${data}`);
                     break;
 
@@ -37,12 +35,12 @@ function createSocketServer(server) {
                         date: Date.now(),
                     };
 
-                    console.log('message received:', message);
-
                     // broadcast message to all joined users
                     Array.from(users.keys()).forEach((socket) =>
                         emit(socket, 'message', message)
                     );
+
+                    console.log('message received:', message);
                     break;
             }
         });
@@ -51,9 +49,4 @@ function createSocketServer(server) {
     return wss;
 }
 
-// const app = express();
-// const server = createServer(app);
-// const wss = createSocketServer(server);
 const wss = createSocketServer();
-
-// server.listen(9090);
