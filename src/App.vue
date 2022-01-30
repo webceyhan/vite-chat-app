@@ -1,7 +1,7 @@
 <script setup>
 
-import {  ref } from 'vue';
-import Message from './components/Message.vue'
+import { ref } from 'vue';
+import MessageList from './components/MessageList.vue'
 
 const user = ref('you')
 
@@ -37,14 +37,7 @@ const messages = ref([
 
     <!-- Body -->
     <div class="card-body p-4">
-      <ul class="list-group h-100 overflow-auto">
-        <message
-          v-for="(message, i) in messages"
-          :key="i"
-          :message="message"
-          :own="message.user === user"
-        />
-      </ul>
+      <message-list :user="user" :messages="messages" />
     </div>
 
     <!-- Footer -->
