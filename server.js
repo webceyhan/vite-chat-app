@@ -1,8 +1,26 @@
+const express = require('express');
+const { createServer } = require('http');
 const { WebSocketServer } = require('ws');
 
-function createSocketServer() {
+const createHttpServer = (port = 9090) => {
+    // create app
+    const app = express();
+    const server = createServer(app);
+
+    // serve static client files
+    app.use(express.static('public'));
+
+    // listen
+    server.listen(port, () => {
+        console.log(`http server started at http://localhost:${port}`);
+    });
+
+    return server;
+};
+
+const createSocketServer = (httpServer) => {
     // create websocket server
-    const wss = new WebSocketServer({ port: 9090 });
+    const wss = new WebSocketServer({ server: httpServer });
 
     // define user map (socket:name)
     const users = new Map();
@@ -47,6 +65,8 @@ function createSocketServer() {
     });
 
     return wss;
-}
+};
 
-const wss = createSocketServer();
+// start servers on same port
+const server = createHttpServer();
+const wss = createSocketServer(server);
