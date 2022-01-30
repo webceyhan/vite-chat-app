@@ -38,7 +38,8 @@ export const createApi = () => {
 
         switch (event) {
             case 'joined':
-                state.active = data;
+                state.user = data;
+                state.active = !!data;
                 break;
             
             case 'message':

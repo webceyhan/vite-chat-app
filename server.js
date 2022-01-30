@@ -40,7 +40,7 @@ const createSocketServer = (httpServer) => {
                 case 'join':
                     // add user {ws as id: data as name}
                     users.set(ws, data);
-                    emit(ws, 'joined', true);
+                    emit(ws, 'joined', data);
 
                     console.log(`user joined: ${data}`);
                     break;
