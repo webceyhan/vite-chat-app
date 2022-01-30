@@ -4,6 +4,12 @@ import { ref } from 'vue';
 import MessageList from './components/MessageList.vue'
 import MessageInput from './components/MessageInput.vue'
 
+const socket = new WebSocket(`ws://${location.host}`);
+
+socket.onopen = () => {
+  console.log('socket open')
+}
+
 const user = ref('you')
 
 const messages = ref([
