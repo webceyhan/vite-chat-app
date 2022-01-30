@@ -4,6 +4,7 @@
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
+    "build:prod": "vite build --mode=prod",
     "preview": "vite preview",
     "serve": "node server"
   },
