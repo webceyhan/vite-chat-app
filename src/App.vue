@@ -24,25 +24,24 @@ const onSend = (text) => {
 </script>
 
 <template>
-  <div
-    class="card bg-secondary bg-opacity-25 text-light border-secondary"
-    style="min-width: 500px;"
-  >
-    <!-- Header -->
-    <div class="card-header p-4">
-      <h1 class="display-5">Chat Application</h1>
+  <div class="col-md-8 offset-md-2">
+    <div class="card bg-secondary bg-opacity-25 text-light border-secondary">
+      <!-- Header -->
+      <div class="card-header p-4">
+        <h1 class="display-5">Chat Application</h1>
 
-      <user-input :active="state.active" @join="onJoin" @leave="onLeave" />
-    </div>
+        <user-input :active="state.active" @join="onJoin" @leave="onLeave" />
+      </div>
 
-    <!-- Body -->
-    <div class="card-body p-4">
-      <message-list :user="state.user" :messages="state.messages" />
-    </div>
+      <!-- Body -->
+      <div class="card-body p-4">
+        <message-list :user="state.user" :messages="state.messages" />
+      </div>
 
-    <!-- Footer -->
-    <div class="card-footer p-4">
-      <message-input @send="onSend" />
+      <!-- Footer -->
+      <div v-if="state.active" class="card-footer p-4">
+        <message-input @send="onSend" />
+      </div>
     </div>
   </div>
 </template>
