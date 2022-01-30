@@ -2,9 +2,10 @@
   "name": "vite-chat-app",
   "version": "0.0.0",
   "scripts": {
-    "dev": "node server",
+    "dev": "vite dev",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "serve": "node server"
   },
   "dependencies": {
     "bootstrap": "^5.1.3",
