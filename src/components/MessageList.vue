@@ -10,7 +10,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <ul class="list-group overflow-auto h-100">
+  <ul class="list-group overflow-auto h-100" style="max-height: 400px;">
     <message
       v-for="(message, i) in messages"
       :key="i"
