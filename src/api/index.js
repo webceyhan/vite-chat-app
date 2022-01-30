@@ -16,7 +16,7 @@ const timestamp = (now = Date.now()) =>
 export const createApi = () => {
     // define internal state
     const state = reactive({
-        user: '',
+        user: null,
         messages: [],
         active: false,
     });
@@ -40,6 +40,12 @@ export const createApi = () => {
             case 'joined':
                 state.user = data;
                 state.active = !!data;
+                break;
+            
+            case 'left':
+                state.user = null;
+                state.active = false;
+                state.messages = [];
                 break;
             
             case 'message':

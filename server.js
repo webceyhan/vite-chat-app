@@ -31,6 +31,7 @@ const createSocketServer = (httpServer) => {
     };
 
     wss.on('connection', (ws) => {
+        let user = null;
         console.log('socket connected');
 
         ws.on('message', (raw) => {
@@ -39,16 +40,24 @@ const createSocketServer = (httpServer) => {
             switch (event) {
                 case 'join':
                     // add user {ws as id: data as name}
-                    users.set(ws, data);
-                    emit(ws, 'joined', data);
+                    user = data;
+                    users.set(ws, user);                    
+                    emit(ws, 'joined', user);
 
-                    console.log(`user joined: ${data}`);
+                    console.log(`user joined: ${user}`);
+                    break;
+
+                case 'leave':                    
+                    users.delete(ws);
+                    emit(ws, 'left', user);
+
+                    console.log(`user left: ${user}`);
                     break;
 
                 case 'message':
                     // construct message object
                     const message = {
-                        user: users.get(ws),
+                        user,
                         text: data,
                         date: Date.now(),
                     };
@@ -58,7 +67,7 @@ const createSocketServer = (httpServer) => {
                         emit(socket, 'message', message)
                     );
 
-                    console.log('message received:', message);
+                    console.log(`user messaged: ${user}`);
                     break;
             }
         });
