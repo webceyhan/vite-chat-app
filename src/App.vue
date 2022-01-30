@@ -1,33 +1,21 @@
 <script setup>
 
 import { ref } from 'vue';
+import { createApi } from './api';
 import MessageList from './components/MessageList.vue'
 import MessageInput from './components/MessageInput.vue'
 
-const socket = new WebSocket(`ws://${location.host}`);
+const api = createApi();
 
-socket.onopen = () => {
-  console.log('socket open')
+const user = ref('');
+const state = ref(api.state)
+
+const onJoin = () => {
+  api.emit('join', user.value)
 }
 
-const user = ref('you')
-
-const messages = ref([
-  { user: 'user', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, ipsam?', date: '3:10 PM' },
-  { user: 'you', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi totam amet modi aliquam aut', date: '3:15 PM' },
-  { user: 'user', text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius dolore sapiente laboriosam tempore facilis blanditiis, recusandae totam explicabo numquam voluptatem ullam laudantium tempora.', date: '4:00 PM' },
-  { user: 'you', text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius dolore sapiente laboriosam tempore', date: '6:30 PM' },
-])
-
-
-const timestamp = (date = new Date) => date.toLocaleTimeString('en-US', {
-  hour: 'numeric', 
-  minute: 'numeric', 
-  hour12: true
-});
-
 const onSend = (text) => {
-  messages.value.push({ user, text, date: timestamp() })
+  api.emit('message', text)
 }
 
 </script>
@@ -47,14 +35,15 @@ const onSend = (text) => {
           type="text"
           class="form-control bg-dark text-light border-secondary"
           placeholder="enter your name and join.."
+          v-model="user"
         />
-        <button class="btn btn-outline-secondary" type="button">Join Chat</button>
+        <button class="btn btn-outline-secondary" type="button" @click="onJoin">Join Chat</button>
       </div>
     </div>
 
     <!-- Body -->
     <div class="card-body p-4">
-      <message-list :user="user" :messages="messages" />
+      <message-list :user="user" :messages="state.messages" />
     </div>
 
     <!-- Footer -->

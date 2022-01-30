@@ -1,0 +1,22 @@
+[
+    {
+        "user": "user",
+        "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, ipsam?",
+        "date": "3:10 PM"
+    },
+    {
+        "user": "you",
+        "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi totam amet modi aliquam aut",
+        "date": "3:15 PM"
+    },
+    {
+        "user": "user",
+        "text": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius dolore sapiente laboriosam tempore facilis blanditiis, recusandae totam explicabo numquam voluptatem ullam laudantium tempora.",
+        "date": "4:00 PM"
+    },
+    {
+        "user": "you",
+        "text": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius dolore sapiente laboriosam tempore",
+        "date": "6:30 PM"
+    }
+]
