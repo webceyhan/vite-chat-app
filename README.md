@@ -1,3 +1,5 @@
+[![Deploy to Heroku](https://github.com/webceyhan/vite-chat-app/actions/workflows/heroku.yml/badge.svg)](https://github.com/webceyhan/vite-chat-app/actions/workflows/heroku.yml)
+
 # Chat Application
 
 ## Vue 3 + Vite
