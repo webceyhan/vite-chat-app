@@ -2,8 +2,9 @@ import { reactive } from 'vue';
 
 // define environment vars
 const IS_PROD = import.meta.env.PROD;
+const PROTOCOL = location.protocol.replace('http', 'ws');
 const HOST_DEV = 'ws://localhost:8080';
-const HOST_PROD = `ws//${location.host}`;
+const HOST_PROD = `${PROTOCOL}//${location.host}`;
 const SOCKET_URL = IS_PROD ? HOST_PROD : HOST_DEV;
 
 const timestamp = (now = Date.now()) =>
