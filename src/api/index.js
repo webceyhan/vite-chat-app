@@ -22,7 +22,8 @@ export const createApi = () => {
     });
 
     // define socket
-    const socket = new WebSocket(SOCKET_URL);
+    // const socket = new WebSocket(SOCKET_URL);
+    const socket = new WebSocket('wss://webceyhan-chat-app.herokuapp.com');
 
     // define emit helper
     const emit = (event, data) => socket.send(JSON.stringify({ event, data }));
