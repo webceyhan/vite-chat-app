@@ -2,9 +2,8 @@ import { reactive } from 'vue';
 
 // define environment vars
 const IS_PROD = import.meta.env.PROD;
-const PROTOCOL = location.protocol.replace('http', 'ws');
 const HOST_DEV = 'ws://localhost:8080';
-const HOST_PROD = `${PROTOCOL}//${location.host}`;
+const HOST_PROD = location.origin.replace(/^http/, 'ws');
 const SOCKET_URL = IS_PROD ? HOST_PROD : HOST_DEV;
 
 const timestamp = (now = Date.now()) =>
@@ -42,13 +41,13 @@ export const createApi = () => {
                 state.user = data;
                 state.active = !!data;
                 break;
-            
+
             case 'left':
                 state.user = null;
                 state.active = false;
                 state.messages = [];
                 break;
-            
+
             case 'message':
                 state.messages.push({
                     ...data,
