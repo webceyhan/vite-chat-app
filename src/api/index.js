@@ -1,7 +1,7 @@
 import { reactive } from 'vue';
 
 // define environment vars
-const IS_PROD = import.meta.env.PROD;
+const IS_PROD = import.meta.env.PROD; // PROD=true when vite build (no need for --mode)
 const HOST_DEV = 'ws://localhost:8080';
 const HOST_PROD = location.origin.replace(/^http/, 'ws');
 const SOCKET_URL = IS_PROD ? HOST_PROD : HOST_DEV;
@@ -22,8 +22,7 @@ export const createApi = () => {
     });
 
     // define socket
-    // const socket = new WebSocket(SOCKET_URL);
-    const socket = new WebSocket('wss://webceyhan-chat-app.herokuapp.com');
+    const socket = new WebSocket(SOCKET_URL);
 
     // define emit helper
     const emit = (event, data) => socket.send(JSON.stringify({ event, data }));

@@ -14,7 +14,7 @@
   "homepage": "https://github.com/webceyhan/vite-chat-app#readme",
   "scripts": {
     "dev": "vite dev",    
-    "build": "vite build --mode=prod",
+    "build": "vite build",
     "preview": "vite preview",
     "start": "node server"
   },
