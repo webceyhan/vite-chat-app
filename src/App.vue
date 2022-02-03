@@ -28,7 +28,10 @@ const onSend = (text) => {
     <div class="card bg-secondary bg-opacity-25 text-light border-secondary">
       <!-- Header -->
       <div class="card-header p-4">
-        <h1 class="display-5">Chat Application</h1>
+        <h1 class="display-5">
+          <img src="./assets/logo.png" class="img-fluid" style="width: 4rem;">
+          Chat Application
+          </h1>
 
         <user-input :active="state.active" @join="onJoin" @leave="onLeave" />
       </div>
