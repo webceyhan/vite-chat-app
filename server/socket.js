@@ -1,6 +1,6 @@
-const { WebSocketServer } = require('ws');
+import { WebSocketServer } from 'ws';
 
-const createSocketServer = (httpServer) => {
+export const createSocketServer = (httpServer) => {
     // create websocket server
     const wss = new WebSocketServer({ server: httpServer });
 
@@ -82,5 +82,3 @@ const createSocketServer = (httpServer) => {
 
     return wss;
 };
-
-module.exports = { createSocketServer };

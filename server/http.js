@@ -1,12 +1,14 @@
-const path = require('path');
-const express = require('express');
-const { createServer } = require('http');
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+import { createServer } from 'http';
+import express from 'express';
 
 // define constants
-const rootDir = path.join(__dirname, '/..');
-const wwwDir = path.join(rootDir, '/dist');
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const wwwDir = `${__dirname}/../dist`;
+const wwwIndex = `${wwwDir}/index.html`;
 
-const createHttpServer = (port) => {
+export const createHttpServer = (port) => {
     // create app
     const app = express();
     const server = createServer(app);
@@ -15,17 +17,12 @@ const createHttpServer = (port) => {
     app.use(express.static(wwwDir));
 
     // define catch-all route for app
-    app.get('*', function (req, res) {
-        res.sendFile(`${wwwDir}/index.html`);
-    });
+    app.get('*', (req, res) => res.sendFile(wwwIndex));
 
     // start listening
-    server.listen(port, () => {
-        const url = `http://localhost:${port}`;
-        console.log(`server started: ${url}`);
-    });
+    server.listen(port, () =>
+        console.log(`server started: http://localhost:${port}`)
+    );
 
     return server;
 };
-
-module.exports = { createHttpServer };
