@@ -76,30 +76,61 @@ npm install npm@latest -g
 You can use following commands to do various task with the project.
 
 ```sh
-npm start           # start production server
+npm start           # start backend server (required)
 npm run dev         # start development server
 npm run build       # build for production
 npm run preview     # preview built app
 ```
 
-## Deploy to Heroku
+<br>
+<!-- Develop -->
 
-There is a built-in Github Action which deploys the project to Heroku on every push.
-You need to follow the steps below, in order to setup automatical deployment.
+## Develop
+
+1. Run the backend server first (it's needed as socket backend).
+    ```sh
+    npm start
+    ```
+2. Start the development server for frontend app in another terminal:
+    ```sh
+    npm run dev
+    ```
+
+<br>
+<!-- Build -->
+
+## Build
+
+You only need to build the frontend application.
+
+```sh
+npm run build
+```
+
+To preview, you have to run the backend server which will serve the app and provide socket connectivity in order to make it work properly.
+
+```sh
+npm start
+```
+
+<br>
+<!-- Deploy -->
+
+## Deploy (Heroku)
+
+There is a built-in Github Action which automatically deploys the project to Heroku on every push.
+Follow the steps below and it will be deployed automatically on every push.
 
 1. Create an [Heroku](https://www.heroku.com/home) account.
 
-2. Install the heroku-cli as shown in the [guide](https://devcenter.heroku.com/articles/heroku-cli#install-the-heroku-cli)
+2. Install the heroku-cli as shown in the [guide](https://devcenter.heroku.com/articles/heroku-cli#install-the-heroku-cli).
 
-3. Get inside the project folder and bind it to Heroku.
-
+3. Create a new Heroku app inside the project folder to bind it.
     ```sh
-    cd <project folder>
-    heroku create <app name>
+    heroku create
     ```
 
-    > If you don't provide an `<app name>`, Heroku will generate a random unique name.
-    > Otherwise it will create a new application on Heroku and bind it to your local project by adding a remote upstream called `heroku` to your git repository.
+    > This will create a new application on Heroku server and bind it to your project by adding a remote `heroku` upstream to your git repository.
 
 4. Setup the repository secrets on your github as shown below:
     ```yaml
@@ -119,15 +150,14 @@ You need to follow the steps below, in order to setup automatical deployment.
                     heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
                     heroku_email: ${{secrets.HEROKU_EMAIL}}
     ```
-> If you've done the steps above, project should be deployed to Heroku automatically after each commit to master.
 
 <br>
 <!-- Roadmap -->
 
 ## Roadmap
 
--   [ ] Code organization
--   [ ] Proper state management
+-   [ ] Improve code organization
+-   [ ] Improve state management
 -   [ ] Support for environment vars
 
 > See the [open issues](https://github.com/webceyhan/vite-chat-app/issues) for a full list of proposed features (and known issues).
