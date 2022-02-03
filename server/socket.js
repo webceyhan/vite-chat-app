@@ -12,6 +12,9 @@ export const createSocketServer = (httpServer) => {
         ws.send(JSON.stringify({ event, data }));
     };
 
+    const broadcast = (clients, event, data) =>
+        Array.from(clients).map((ws) => emit(ws, event, data));
+
     wss.on('connection', (ws) => {
         let user = null;
         console.log('socket connected');
@@ -36,9 +39,7 @@ export const createSocketServer = (httpServer) => {
             const message = { user, text, date };
 
             // broadcast message to all joined users
-            Array.from(users.keys()).forEach((socket) =>
-                emit(socket, 'message', message)
-            );
+            broadcast(users.keys(), 'message', message);
 
             console.log(`user messaged: ${user}`);
         };
