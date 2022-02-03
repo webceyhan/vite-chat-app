@@ -13,10 +13,12 @@
   },
   "homepage": "https://github.com/webceyhan/vite-chat-app#readme",
   "scripts": {
-    "dev": "vite dev",    
+    "start": "node server",
+    "dev": "concurrently \"npm:dev:backend\" \"npm:dev:app\" ",
+    "dev:frontend": "vite dev",
+    "dev:backend": "nodemon server",
     "build": "vite build",
-    "preview": "vite preview",
-    "start": "node server"
+    "preview": "npm start"
   },
   "dependencies": {
     "bootstrap": "^5.1.3",
@@ -26,6 +28,8 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.0.0",
+    "concurrently": "^7.0.0",
+    "nodemon": "^2.0.15",
     "vite": "^2.7.2"
   }
 }

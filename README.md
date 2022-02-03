@@ -76,25 +76,22 @@ npm install npm@latest -g
 You can use following commands to do various task with the project.
 
 ```sh
-npm start           # start backend server (required)
-npm run dev         # start development server
-npm run build       # build for production
-npm run preview     # preview built app
+npm start               # start backend server
+npm run dev             # start watching backend & frontend concurrently
+npm run dev:backend     # run nodemon to watch backend app
+npm run dev:frontend    # run vite to watch frontend app
+npm run build           # build for production
+npm run preview         # preview built app
 ```
 
 <br>
 <!-- Develop -->
 
 ## Develop
-
-1. Run the backend server first (it's needed as socket backend).
-    ```sh
-    npm start
-    ```
-2. Start the development server for frontend app in another terminal:
-    ```sh
-    npm run dev
-    ```
+You have to run both backend server and frontend development server concurrently to be able to develop application properly.
+```sh
+npm run dev
+```
 
 <br>
 <!-- Build -->
@@ -110,7 +107,7 @@ npm run build
 To preview, you have to run the backend server which will serve the app and provide socket connectivity in order to make it work properly.
 
 ```sh
-npm start
+npm preview
 ```
 
 <br>
