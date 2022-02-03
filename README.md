@@ -7,7 +7,7 @@
 
  <!-- Title -->
 
-# Simple Chat Application built on Vite + Vue + Websockets
+# Vite Chat Application using Vue + Websockets
 
 <!-- Description -->
 
