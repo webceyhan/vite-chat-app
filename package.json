@@ -13,10 +13,10 @@
   },
   "homepage": "https://github.com/webceyhan/vite-chat-app#readme",
   "scripts": {
-    "start": "node server",
-    "dev": "concurrently \"npm:dev:backend\" \"npm:dev:app\" ",
+    "start": "node server/main.js",
+    "dev": "concurrently \"npm:dev:backend\" \"npm:dev:frontend\" ",
     "dev:frontend": "vite dev",
-    "dev:backend": "nodemon server",
+    "dev:backend": "nodemon server/main.js",
     "build": "vite build",
     "preview": "npm start"
   },

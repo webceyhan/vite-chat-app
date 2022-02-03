@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 const { createServer } = require('http');
 const { WebSocketServer } = require('ws');
@@ -8,7 +9,7 @@ const createHttpServer = (port = process.env.PORT || 8080) => {
     const server = createServer(app);
 
     // set root directory
-    const rootDir = __dirname + '/dist';
+    const rootDir = path.join(__dirname, '/../dist');
 
     // serve static client files
     app.use(express.static(rootDir));
