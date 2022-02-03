@@ -12,7 +12,7 @@ const order = computed(()=> props.own ? 1:0)
 </script>
 
 <template>
-  <li class="list-group-item bg-dark text-light py-3">
+  <li class="list-group-item bg-black bg-opacity-25 text-light py-3">
     <div :class="`d-flex align-items-start justify-content-${direction}`">
       <!-- User -->
       <div :class="`d-flex flex-column m-1 order-${order}`">

@@ -25,7 +25,7 @@ const onSend = (text) => {
 
 <template>
   <div class="col-md-8 offset-md-2">
-    <div class="card bg-secondary bg-opacity-25 text-light border-secondary">
+    <div class="card bg-dark bg-opacity-50 text-light border-dark">
       <!-- Header -->
       <div class="card-header p-4">
         <h1 class="display-5">
