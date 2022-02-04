@@ -11,7 +11,7 @@ export const createSocketServer = (httpServer) => {
         // define events
         ws.on('open', client.heartbeat);
         ws.on('ping', client.heartbeat);
-        ws.on('close', () => client.disconnet(ws));
+        ws.on('close', () => client.disconnect(ws));
 
         ws.on('message', (raw) => {
             const { event, data } = JSON.parse(raw.toString());
