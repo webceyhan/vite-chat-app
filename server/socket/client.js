@@ -34,7 +34,7 @@ export const joinChat = (ws, user) => {
     console.log(`user joined: ${user}`);
 };
 
-export const message = (ws, text) => {
+export const textMessage = (ws, text) => {
     const date = Date.now();
     const user = users.get(ws);
     const message = { user, text, date };

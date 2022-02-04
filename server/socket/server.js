@@ -20,7 +20,7 @@ export const createSocketServer = (httpServer) => {
                 case 'leave':
                     return client.leaveChat(ws);
                 case 'message':
-                    return client.message(ws, data);
+                    return client.textMessage(ws, data);
             }
         });
     });
