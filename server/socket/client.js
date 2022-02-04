@@ -27,6 +27,12 @@ export const leaveChat = (ws) => {
     console.log(`user left: ${user}`);
 };
 
+export const disconnet = (ws) => {
+    client.leaveChat(ws);
+    clearTimeout(ws.pingTimeout);
+    console.log('user disconnected');
+};
+
 export const heartbeat = function () {
     const user = users.get(ws);
     clearTimeout(this.pingTimeout);

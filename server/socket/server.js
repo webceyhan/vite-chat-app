@@ -8,15 +8,10 @@ export const createSocketServer = (httpServer) => {
     wss.on('connection', (ws) => {
         console.log('socket connected');
 
-        // EVENTS ///////////////////////////////////////////////////////////////
+        // define events
         ws.on('open', client.heartbeat);
         ws.on('ping', client.heartbeat);
-
-        ws.on('close', () => {
-            client.leaveChat(ws);
-            clearTimeout(ws.pingTimeout);
-            console.log('connection closed');
-        });
+        ws.on('close', () => client.disconnet(ws));
 
         ws.on('message', (raw) => {
             const { event, data } = JSON.parse(raw.toString());
