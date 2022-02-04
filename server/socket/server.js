@@ -6,11 +6,9 @@ export const createSocketServer = (httpServer) => {
     const wss = new WebSocketServer({ server: httpServer });
 
     wss.on('connection', (ws) => {
-        console.log('socket connected');
-
         // define events
-        ws.on('open', client.heartbeat);
-        ws.on('ping', client.heartbeat);
+        ws.on('open', () => client.connect(ws));
+        ws.on('ping', () => client.heartbeat(ws));
         ws.on('close', () => client.disconnect(ws));
 
         ws.on('message', (raw) => {
