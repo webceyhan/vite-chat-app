@@ -1,5 +1,5 @@
 import { WebSocketServer } from 'ws';
-import * as client from './socket/client.js';
+import * as client from './client.js';
 
 export const createSocketServer = (httpServer) => {
     // create websocket server
