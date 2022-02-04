@@ -1,10 +1,10 @@
 import { reactive } from 'vue';
 
 // define environment vars
-const IS_PROD = import.meta.env.PROD; // PROD=true when vite build (no need for --mode)
+const IS_DEV = import.meta.env.DEV;
 const HOST_DEV = 'ws://localhost:8080';
 const HOST_PROD = location.origin.replace(/^http/, 'ws');
-const SOCKET_URL = IS_PROD ? HOST_PROD : HOST_DEV;
+const SOCKET_URL = IS_DEV ? HOST_DEV : HOST_PROD;
 
 const timestamp = (now = Date.now()) =>
     new Date(now).toLocaleTimeString('en-US', {
