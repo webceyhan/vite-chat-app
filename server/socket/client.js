@@ -1,15 +1,8 @@
+import { emit, broadcast } from './utils.js';
+
 // define user map (socket:name)
 const users = new Map();
 
-// HELPERS //////////////////////////////
-const emit = (ws, event, data) => {
-    ws.send(JSON.stringify({ event, data }));
-};
-
-const broadcast = (clients, event, data) =>
-    Array.from(clients).map((ws) => emit(ws, event, data));
-
-// EVENTS ///////////////////////////////
 export const joinChat = (ws, user) => {
     users.set(ws, user);
     emit(ws, 'joined', user);
@@ -41,11 +34,4 @@ export const heartbeat = function () {
     this.pingTimeout = setTimeout(() => {
         this.terminate();
     }, 30000 + 1000);
-};
-
-export const useClient = (ws) => {
-    return {
-        join: (user) => joinChat(ws, user),
-        leave: () => leaveChat(ws),
-    };
 };
