@@ -5,10 +5,21 @@ export const createSocketServer = (httpServer) => {
     // create websocket server
     const wss = new WebSocketServer({ server: httpServer });
 
+    // Keep-alive check on clints
+    const interval = setInterval(() => {
+        wss.clients.forEach((ws) => {
+            if (!ws.isAlive) return ws.terminate();
+            ws.isAlive = false;
+            ws.ping();
+        });
+    }, 30000);
+
+    wss.on('close', () => clearInterval(interval));
+
     wss.on('connection', (ws) => {
         // define events
-        ws.on('open', () => client.connect(ws));
-        ws.on('ping', () => client.heartbeat(ws));
+        client.connect(ws);
+        ws.on('pong', ()=> client.heartbeat(ws));
         ws.on('close', () => client.disconnect(ws));
 
         ws.on('message', (raw) => {
@@ -24,6 +35,8 @@ export const createSocketServer = (httpServer) => {
             }
         });
     });
+
+
 
     return wss;
 };
