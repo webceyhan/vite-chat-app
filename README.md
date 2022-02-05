@@ -104,7 +104,8 @@ npm preview
 
 ## Deployment (Heroku)
 
-A built-in Github Action defined in [.github/workflows/heroku.yml](./.github/workflows/heroku.yml), will automatically deploy the project to Heroku on every push.
+A GitHub Action will automatically deploy the project to Heroku on every push. 
+> See the details in [.github/workflows/heroku.yml](./.github/workflows/heroku.yml)
 
 1. Create an [Heroku](https://www.heroku.com/home) account.
 
