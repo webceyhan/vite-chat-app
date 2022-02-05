@@ -127,15 +127,6 @@ A GitHub Action will automatically deploy the project to Heroku on every push.
     ```
 
 <br>
-<!-- ROADMAP ///////////////////////////////////////////////////////////// -->
-
-## Roadmap
-
--   [ ] Improve code organization
--   [ ] Improve state management
--   [ ] Support for environment vars
-
-<br>
 <!-- REFERENCES ////////////////////////////////////////////////////////// -->
 
 ## References
