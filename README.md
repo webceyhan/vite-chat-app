@@ -96,7 +96,7 @@ npm run build
 To preview, you still have to run the backend server which will serve the app and provide socket connectivity in order to make it work properly.
 
 ```sh
-npm preview
+npm run preview
 ```
 
 <br>
