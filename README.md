@@ -1,16 +1,15 @@
+<!-- AUTOMATION BADGES -->
+
 [![CodeQL](https://github.com/webceyhan/vite-chat-app/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/webceyhan/vite-chat-app/actions/workflows/codeql-analysis.yml)
 [![Deploy to Heroku](https://github.com/webceyhan/vite-chat-app/actions/workflows/heroku.yml/badge.svg)](https://github.com/webceyhan/vite-chat-app/actions/workflows/heroku.yml)
 
-<!-- Logo -->
+<!-- LOGO (OPTIONAL) -->
 
 <img src="./src/assets/logo.png" width="100px">
-<!-- ![Logo](./src/assets/logo.png) -->
 
- <!-- Title -->
+ <!-- HEADER ///////////////////////////////////////////////////////////// -->
 
-# Vite Chat Application using Vue + Websockets
-
-<!-- Description -->
+# Vite Chat Application
 
 This is a simple chat application to demonstrate how to utilize websockets for full duplex communication.
 
@@ -26,33 +25,18 @@ Frontend application is built with Vite + Vue 3 + Bootstrap. Client is automatic
 [@webceyhan](https://twitter.com/webceyhan)
 
 <br>
-<!-- Built With -->
+<!-- REQUIREMENTS /////////////////////////////////////////////////////// -->
 
-## Built With
+## Requirements
 
--   [Node.js](https://nodejs.dev/)
--   [Vite](https://vitejs.dev/)
--   [Vue.js](https://vuejs.org/)
--   [Bootstrap](https://getbootstrap.com)
--   [Express](https://expressjs.com/)
--   [WebSocket (WS)](https://github.com/websockets/ws)
+You need to install the [Node.js](https://nodejs.dev/)
+and `npm` package manager first.
 
-<br>
-<!-- Prerequisites -->
-
-## Prerequisites
-
-You need to install the [Node.js](https://nodejs.dev/) and npm package manager first.
-
-```sh
-npm install npm@latest -g
-```
-
-> Recommended IDE settings:
+> Recommended IDE:
 > [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
 
 <br>
-<!-- Installation -->
+<!-- INSTALLATION //////////////////////////////////////////////////////// -->
 
 ## Installation
 
@@ -62,7 +46,7 @@ npm install npm@latest -g
     ```
 2. Get inside the cloned project folder.
     ```sh
-    cd <project folder>
+    cd vite-chat-app
     ```
 3. Install NPM packages.
     ```sh
@@ -70,87 +54,79 @@ npm install npm@latest -g
     ```
 
 <br>
-<!-- Usage Examples -->
+<!-- USAGE /////////////////////////////////////////////////////////////// -->
 
 ## Usage
 
 You can use following commands to do various task with the project.
 
 ```sh
-npm start               # start backend server
+npm start               # run application
 npm run dev             # start watching backend & frontend concurrently
-npm run dev:backend     # run nodemon to watch backend app
-npm run dev:frontend    # run vite to watch frontend app
+npm run dev:backend     # start nodemon to watch backend app
+npm run dev:frontend    # start vite to watch frontend app
 npm run build           # build for production
 npm run preview         # preview built app
 ```
 
-<br>
-<!-- Develop -->
+> Take a look at the other scripts in [`package.json`](./package.json)
 
-## Develop
+<br>
+<!-- DEVELOPMENT ///////////////////////////////////////////////////////// -->
+
+## Development
+
 You have to run both backend server and frontend development server concurrently to be able to develop application properly.
+
 ```sh
 npm run dev
 ```
 
 <br>
-<!-- Build -->
+<!-- BUILDING //////////////////////////////////////////////////////////// -->
 
-## Build
+## Building
 
-You only need to build the frontend application.
+Build the frontend application for production.
 
 ```sh
 npm run build
 ```
 
-To preview, you have to run the backend server which will serve the app and provide socket connectivity in order to make it work properly.
+To preview, you still have to run the backend server which will serve the app and provide socket connectivity in order to make it work properly.
 
 ```sh
 npm preview
 ```
 
 <br>
-<!-- Deploy -->
+<!-- DEPLOYMENT ////////////////////////////////////////////////////////// -->
 
-## Deploy (Heroku)
+## Deployment (Heroku)
 
-There is a built-in Github Action which automatically deploys the project to Heroku on every push.
-Follow the steps below and it will be deployed automatically on every push.
+A built-in Github Action defined in [.github/workflows/heroku.yml](./.github/workflows/heroku.yml), will automatically deploy the project to Heroku on every push.
 
 1. Create an [Heroku](https://www.heroku.com/home) account.
 
-2. Install the heroku-cli as shown in the [guide](https://devcenter.heroku.com/articles/heroku-cli#install-the-heroku-cli).
+2. Install the `heroku-cli` as shown in the [guide](https://devcenter.heroku.com/articles/heroku-cli#install-the-heroku-cli).
 
 3. Create a new Heroku app inside the project folder to bind it.
+
     ```sh
     heroku create
     ```
 
     > This will create a new application on Heroku server and bind it to your project by adding a remote `heroku` upstream to your git repository.
 
-4. Setup the repository secrets on your github as shown below:
-    ```yaml
-    name: Deploy to Heroku
-    on:
-        push:
-            branches:
-                - master
-    jobs:
-        build:
-            runs-on: ubuntu-latest
-            steps:
-                - uses: actions/checkout@v2
-                - uses: akhileshns/heroku-deploy@v3.12.12
-                with:
-                    heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-                    heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
-                    heroku_email: ${{secrets.HEROKU_EMAIL}}
+4. Set the following secrets on your Github repository:
+    ```sh
+    HEROKU_API_KEY
+    HEROKU_APP_NAME
+    HEROKU_EMAIL
     ```
 
 <br>
-<!-- Roadmap -->
+<!-- ROADMAP ///////////////////////////////////////////////////////////// -->
 
 ## Roadmap
 
@@ -158,13 +134,17 @@ Follow the steps below and it will be deployed automatically on every push.
 -   [ ] Improve state management
 -   [ ] Support for environment vars
 
-> See the [open issues](https://github.com/webceyhan/vite-chat-app/issues) for a full list of proposed features (and known issues).
-
 <br>
-<!-- Acknowledgments -->
+<!-- REFERENCES ////////////////////////////////////////////////////////// -->
 
-## Acknowledgments
+## References
 
--   Project hosted on [Heroku](https://www.heroku.com/home)
--   Project deployed with [GitHub Actions](https://docs.github.com/en/actions)
-    -   using [heroku-deploy](https://github.com/akhileshns/heroku-deploy@)
+-   [Node.js](https://nodejs.dev/)
+-   [Vite](https://vitejs.dev/)
+-   [Vue.js](https://vuejs.org/)
+-   [Bootstrap](https://getbootstrap.com)
+-   [Express](https://expressjs.com/)
+-   [WebSocket (WS)](https://github.com/websockets/ws)
+-   [GitHub Actions](https://docs.github.com/en/actions)
+    -   [Heroku](https://www.heroku.com)
+    -   [heroku-deploy](https://github.com/akhileshns/heroku-deploy@)
