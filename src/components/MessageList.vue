@@ -21,7 +21,7 @@ watch(props.messages, () => {
 </script>
 
 <template>
-  <ul ref="root" class="list-group overflow-auto" style="height: 400px;">
+  <ul ref="root" class="list-group list-group-flush overflow-auto" style="height: 400px;">
     <message
       v-for="(message, i) in messages"
       :key="i"
